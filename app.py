@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 
 model = pickle.load(open('breast_cancer_model.pkl', 'rb'))
-df = pd.read_csv("breast-cancer.csv")
+df = pd.read_csv("breast_cancer.csv")
 
 X = df.drop(["id", "diagnosis"], axis=1)
 y = df["diagnosis"].map({"M": 0, "B": 1})
