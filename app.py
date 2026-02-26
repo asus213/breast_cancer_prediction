@@ -8,8 +8,27 @@ from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 
 model = pickle.load(open('breast_cancer_model.pkl', 'rb'))
-st.write("Model Accuracy: 96.49 %")
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+import pickle
 
+model = pickle.load(open("breast_cancer_model.pkl", "rb"))
+
+df = pd.read_csv("breast_cancer.csv")
+
+X = df.drop(["id", "diagnosis"], axis=1)
+y = df["diagnosis"].map({"M":1,"B":0})
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+
+st.write("Model Accuracy:", round(accuracy*100,2), "%")
 
 st.title("Breast Cancer Prediction App")
 
