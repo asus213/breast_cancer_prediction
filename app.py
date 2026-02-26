@@ -17,7 +17,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 
-accuracy = accuracy_score(y_test, y_pred)
 
 st.write("Model Accuracy:", round(accuracy * 100, 2), "%")
 
