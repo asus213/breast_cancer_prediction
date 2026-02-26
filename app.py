@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 model = pickle.load(open('breast_cancer_model.pkl', 'rb'))
 st.write("Model Accuracy: 96.49 %")
-st.write("Model Accuracy:", round(accuracy*100, 2), "%")
+
 
 st.title("Breast Cancer Prediction App")
 
